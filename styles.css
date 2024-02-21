@@ -136,7 +136,7 @@ body {
     align-items: center;
     justify-content: space-between;
     grid-area: bottom-bar;
-    font-size: 15px;
+    font-size: 13px;
     background-color: white;
     margin-bottom: 25px;
     padding: 20px;
@@ -146,15 +146,22 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     transition: color 0.3s;
     border-radius: 12px;
     
 }
 
 #uncompleted-tasks {
-    font-size: 15px;
+    font-size: 13px;
     color: black;
+}
+#filter-buttons {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+    font-size: 13px;
+    
 }
 
 #filter-buttons button,
@@ -162,7 +169,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 13px;
     transition: color 0.3s;
     border-radius: 12px;
 }
