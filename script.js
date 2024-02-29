@@ -1,92 +1,43 @@
-let todos = [];
+// Getting the result input field
+const resultInput = document.getElementById('result');
 
-function addTodo() {
-    const newTodoInput = document.getElementById('newTodo');
-    const todoText = newTodoInput.value.trim();
+// Clear the result field
+function clearResult() {
+    resultInput.value = '';
+}
 
-    if (todoText !== '') {
-        const todo = {
-            text: todoText,
-            completed: false
-        };
+// Append a number to the result field
+function appendNumber(number) {
+    resultInput.value += number;
+}
 
-        todos.push(todo);
-        newTodoInput.value = '';
-        saveToLocalStorage();
-        displayTodos();
+// Append a decimal point to the result field
+function appendDecimal() {
+    if (!resultInput.value.includes('.')) {
+        resultInput.value += '.';
     }
 }
 
-function deleteTodo(index) {
-    todos.splice(index, 1);
-    saveToLocalStorage();
-    displayTodos();
+// Set the operator to perform calculations
+function setOperator(operator) {
+    resultInput.value += operator;
 }
 
-function toggleCompleted(index) {
-    todos[index].completed = !todos[index].completed;
-    saveToLocalStorage();
-    displayTodos();
-}
-
-function clearCompleted() {
-    todos = todos.filter(todo => !todo.completed);
-    saveToLocalStorage();
-    displayTodos();
-}
-
-function filterTodos(filterType) {
-    let filteredTodos = [];
-
-    if (filterType === 'all') {
-        filteredTodos = todos;
-    } else if (filterType === 'pending') {
-        filteredTodos = todos.filter(todo => !todo.completed);
-    } else if (filterType === 'completed') {
-        filteredTodos = todos.filter(todo => todo.completed);
+// Perform the calculation and store the result in local storage
+function calculate() {
+    try {
+        const result = eval(resultInput.value);
+        resultInput.value = result;
+        localStorage.setItem('calculatorResult', result);
+    } catch (error) {
+        resultInput.value = 'Error';
     }
-
-    displayTodos(filteredTodos);
 }
 
-function displayTodos(todosToDisplay = todos) {
-    const todoList = document.getElementById('todo-list');
-    const uncompletedCount = document.getElementById('uncompleted-count');
-
-    todoList.innerHTML = '';
-    uncompletedCount.innerText = todosToDisplay.filter(todo => !todo.completed).length;
-
-    todosToDisplay.forEach((todo, index) => {
-        const listItem = document.createElement('li');
-        listItem.className = 'todo-item';
-
-        const checkButton = document.createElement('button');
-        checkButton.innerHTML = todo.completed ? '&#10003;' : '&#8211;';
-        checkButton.addEventListener('click', () => toggleCompleted(index));
-
-        const deleteButton = document.createElement('button');
-        deleteButton.innerHTML = '&#10007;';
-        deleteButton.addEventListener('click', () => deleteTodo(index));
-
-        const todoText = document.createElement('div');
-        todoText.innerText = todo.text;
-
-        listItem.appendChild(checkButton);
-        listItem.appendChild(todoText);
-        listItem.appendChild(deleteButton);
-
-        todoList.appendChild(listItem);
-    });
-}
-
-function saveToLocalStorage() {
-    localStorage.setItem('todos', JSON.stringify(todos));
-}
-
-function loadFromLocalStorage() {
-    const storedTodos = localStorage.getItem('todos');
-    todos = storedTodos ? JSON.parse(storedTodos) : [];
-}
-
-loadFromLocalStorage();
-displayTodos();
+// Check if there is a stored result in local storage
+window.onload = function () {
+    const storedResult = localStorage.getItem('calculatorResult');
+    if (storedResult) {
+        resultInput.value = storedResult;
+    }
+};
