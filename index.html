@@ -8,9 +8,9 @@
 </head>
 <body>
     <div class="calculator">
+        <h2>Caclculator</h2>
         <input type="text" id="result" readonly>
         <div class="buttons">
-            <button onclick="clearResult()">C</button>
             <button onclick="appendNumber('7')">7</button>
             <button onclick="appendNumber('8')">8</button>
             <button onclick="appendNumber('9')">9</button>
@@ -27,6 +27,8 @@
             <button onclick="appendDecimal()">.</button>
             <button onclick="calculate()">=</button>
             <button onclick="setOperator('+')">+</button>
+            <button onclick="clearResult()">C</button>
+            <button onclick="deleteLastChar()">DEL</button>
         </div>
     </div>
 
