@@ -34,6 +34,11 @@ function calculate() {
     }
 }
 
+// Delete the last character from the result field
+function deleteLastChar() {
+    resultInput.value = resultInput.value.slice(0, -1);
+}
+
 // Check if there is a stored result in local storage
 window.onload = function () {
     const storedResult = localStorage.getItem('calculatorResult');
