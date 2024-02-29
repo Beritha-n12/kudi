@@ -3,32 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO Application</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Simple Calculator</title>
 </head>
 <body>
-
-<div id="todo-container">
-    <div id="header">TODO</div>
-
-    <div id="todo-input">
-        <input type="text" id="newTodo" placeholder="Start typing...">
-        <button onclick="addTodo()"> Create </button>
-    </div>
-
-    <ul id="todo-list"></ul>
-
-    <div id="bottom-bar">
-        <div id="uncompleted-tasks">Left: <span id="uncompleted-count">0</span></div>
-        <div id="filter-buttons">
-            <button onclick="filterTodos('all')">All</button>
-            <button onclick="filterTodos('pending')">Pending</button>
-            <button onclick="filterTodos('completed')">Completed</button>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <div class="buttons">
+            <button onclick="clearResult()">C</button>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="setOperator('/')">/</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="setOperator('*')">*</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="setOperator('-')">-</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="appendDecimal()">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="setOperator('+')">+</button>
         </div>
-        <button onclick="clearCompleted()">Clear</button>
     </div>
-</div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
