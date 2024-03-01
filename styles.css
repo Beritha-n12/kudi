@@ -63,3 +63,17 @@ button:hover {
     grid-column: 3 / 5;
 }
 
+/* Media Query for tablets and larger screens */
+@media only screen and (min-width: 600px) {
+    .calculator {
+        width: 60%;
+    }
+}
+
+/* Media Query for larger screens */
+@media only screen and (min-width: 1024px) {
+    .calculator {
+        width: 40%;
+    }
+}
+
